@@ -6,7 +6,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter @Setter @NoArgsConstructor
 public class User {
 
 	private int userID;
@@ -18,11 +22,6 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String jwt;
-
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public User(@NotNull int userID, int rSSAccountId, int points, boolean admin, byte[] profilePicture,
 			@Valid @NotBlank @Email(message = "Should be a valid email") String email, String firstName,
@@ -117,79 +116,5 @@ public class User {
 			return false;
 		return true;
 	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getRSSAccountId() {
-		return RSSAccountId;
-	}
-
-	public void setRSSAccountId(int rSSAccountId) {
-		RSSAccountId = rSSAccountId;
-	}
-
-	public int getPoints() {
-		return points;
-	}
-
-	public void setPoints(int points) {
-		this.points = points;
-	}
-
-	public boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
-
-	public byte[] getProfilePicture() {
-		return profilePicture;
-	}
-
-	public void setProfilePicture(byte[] profilePicture) {
-		this.profilePicture = profilePicture;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getJwt() {
-		return jwt;
-	}
-
-	public void setJwt(String jwt) {
-		this.jwt = jwt;
-	}
-
-
 	
 }
