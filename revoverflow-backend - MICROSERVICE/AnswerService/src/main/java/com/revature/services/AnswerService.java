@@ -42,9 +42,11 @@ public class AnswerService {
 	
 	/** @author Natasha Poser 
 	 * @return retrieves the accepted answers accosiated with a specific Question Id*/ 
-	public Page<Answer> getAcceptedAnswerByQuestionId(Pageable pageable, int acceptedId){
-		return answerRepository.getAcceptedAnswerByQuestionId(pageable, acceptedId);
-	}
+	/*
+	 * public Page<Answer> getAcceptedAnswerByQuestionId(Pageable pageable, int
+	 * acceptedId){ return answerRepository.getAcceptedAnswerByQuestionId(pageable,
+	 * acceptedId); }
+	 */
 	
 	/** @author Natasha Poser 
 	 * @return retrieves a specific Answer by using it's ID*/
