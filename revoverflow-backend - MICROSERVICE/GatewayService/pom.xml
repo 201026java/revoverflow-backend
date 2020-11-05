@@ -50,6 +50,15 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!--  dependency for circuit breaker -->
+		<dependency>
+			<groupId>io.reactivex</groupId>
+			<artifactId>rxjava-reactive-streams</artifactId>
+		</dependency>
+
+		
+		
 	</dependencies>
 
 	<dependencyManagement>
