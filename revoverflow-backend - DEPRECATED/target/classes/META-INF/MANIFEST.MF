@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Dragonite
+Built-By: Thomas Hoang
 Build-Jdk: 14.0.2
 Implementation-Title: RevOverflow
 Implementation-Version: 0.0.1-SNAPSHOT

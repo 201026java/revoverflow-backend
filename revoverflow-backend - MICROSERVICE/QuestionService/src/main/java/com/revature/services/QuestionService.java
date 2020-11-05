@@ -19,8 +19,9 @@ import com.revature.repositories.QuestionRepository;
 @Service
 public class QuestionService {
 
-	@Autowired 
-	RSSService rssService;	
+	//Commented out currently since RSS is currently down
+//	@Autowired 
+//	RSSService rssService;	
 	
 	@Autowired
 	QuestionRepository questionRepository;
@@ -98,16 +99,17 @@ public class QuestionService {
 		}
 		// Sets the status as true3
 		question.setStatus(true);
-		
-		Optional<Answer> optAnswer = answerRepository.findById(question.getAcceptedId());
-		if(optAnswer.isPresent()) {
-			Answer a = optAnswer.get();
-			RSSAccountDTO dto = new RSSAccountDTO(a.getUserId(), points);
-			User user = rssService.addPoints(dto);
-			if (user == null) {
-				throw new NullPointerException("Null value");
-			}
-		}
+
+		// Commented out because RSS is currently down
+//		Optional<Answer> optAnswer = answerRepository.findById(question.getAcceptedId());
+//		if(optAnswer.isPresent()) {
+//			Answer a = optAnswer.get();
+//			RSSAccountDTO dto = new RSSAccountDTO(a.getUserId(), points);
+//			User user = rssService.addPoints(dto);
+//			if (user == null) {
+//				throw new NullPointerException("Null value");
+//			}
+//		}
 		return save(question);
 	}
 	
