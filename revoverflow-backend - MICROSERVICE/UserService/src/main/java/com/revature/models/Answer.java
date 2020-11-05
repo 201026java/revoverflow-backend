@@ -2,41 +2,21 @@ package com.revature.models;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "answers")
-@Data @Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 public class Answer {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(name = "user_id")
 	private int userId;
-
-	@Column(name = "question_id")
 	private int questionId;
-
-	@NotBlank(message = "Content must have a string value")
 	private String content;
-
-	// add the not null check in the service layer
 	private LocalDateTime creationDate;
-
-	private LocalDateTime editDate;	
+	private LocalDateTime editDate;
 
 	@Override
 	public int hashCode() {

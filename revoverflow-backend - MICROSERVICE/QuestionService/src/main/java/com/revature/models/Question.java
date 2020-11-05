@@ -16,38 +16,49 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "answers")
+@Table(name = "questions")
 @Data @Getter @Setter @NoArgsConstructor
-public class Answer {
+public class Question {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "user_id")
-	private int userId;
+	// Changed to wrapper class on line 23 so that it could hold a null/0 value
+	@Column(name = "accepted_id")
+	private Integer acceptedId;
 
-	@Column(name = "question_id")
-	private int questionId;
+	@NotBlank(message = "Title requires a string value")
+	private String title;
 
-	@NotBlank(message = "Content must have a string value")
+	@NotBlank(message = "Content requires a string value")
 	private String content;
 
 	// add the not null check in the service layer
+	@Column(name = "creation_date")
 	private LocalDateTime creationDate;
 
-	private LocalDateTime editDate;	
+	@Column(name = "edit_date")
+	private LocalDateTime editDate;
+
+	private boolean status;
+
+	// add the not null check in the service layer
+	@Column(name = "user_id")
+	private int userID;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((acceptedId == null) ? 0 : acceptedId.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((editDate == null) ? 0 : editDate.hashCode());
 		result = prime * result + id;
-		result = prime * result + questionId;
-		result = prime * result + userId;
+		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + userID;
 		return result;
 	}
 
@@ -59,7 +70,12 @@ public class Answer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Answer other = (Answer) obj;
+		Question other = (Question) obj;
+		if (acceptedId == null) {
+			if (other.acceptedId != null)
+				return false;
+		} else if (!acceptedId.equals(other.acceptedId))
+			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -77,29 +93,37 @@ public class Answer {
 			return false;
 		if (id != other.id)
 			return false;
-		if (questionId != other.questionId)
+		if (status != other.status)
 			return false;
-		if (userId != other.userId)
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (userID != other.userID)
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Answer [id=" + id + ", userId=" + userId + ", questionId=" + questionId + ", content=" + content
-				+ ", creationDate=" + creationDate + ", editDate=" + editDate + "]";
-	}
-
-	public Answer(int id, int userId, int questionId,
-			@NotBlank(message = "Content must have a string value") String content, LocalDateTime creationDate,
-			LocalDateTime editDate) {
+	public Question(int id, Integer acceptedId, @NotBlank(message = "Title requires a string value") String title,
+			@NotBlank(message = "Content requires a string value") String content, LocalDateTime creationDate,
+			LocalDateTime editDate, boolean status, int userID) {
 		super();
 		this.id = id;
-		this.userId = userId;
-		this.questionId = questionId;
+		this.acceptedId = acceptedId;
+		this.title = title;
 		this.content = content;
 		this.creationDate = creationDate;
 		this.editDate = editDate;
+		this.status = status;
+		this.userID = userID;
 	}
 
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", acceptedId=" + acceptedId + ", title=" + title + ", content=" + content
+				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", userID="
+				+ userID + "]";
+	}
+	
 }

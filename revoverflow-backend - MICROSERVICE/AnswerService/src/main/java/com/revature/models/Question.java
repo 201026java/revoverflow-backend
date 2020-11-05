@@ -2,52 +2,36 @@ package com.revature.models;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "answers")
-@Data @Getter @Setter @NoArgsConstructor
-public class Answer {
+@Getter @Setter @NoArgsConstructor
+public class Question {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(name = "user_id")
-	private int userId;
-
-	@Column(name = "question_id")
-	private int questionId;
-
-	@NotBlank(message = "Content must have a string value")
+	private Integer acceptedId;
+	private String title;
 	private String content;
-
-	// add the not null check in the service layer
 	private LocalDateTime creationDate;
-
-	private LocalDateTime editDate;	
+	private LocalDateTime editDate;
+	private boolean status;
+	private int userID;
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((acceptedId == null) ? 0 : acceptedId.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((creationDate == null) ? 0 : creationDate.hashCode());
 		result = prime * result + ((editDate == null) ? 0 : editDate.hashCode());
 		result = prime * result + id;
-		result = prime * result + questionId;
-		result = prime * result + userId;
+		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + userID;
 		return result;
 	}
 
@@ -59,7 +43,12 @@ public class Answer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Answer other = (Answer) obj;
+		Question other = (Question) obj;
+		if (acceptedId == null) {
+			if (other.acceptedId != null)
+				return false;
+		} else if (!acceptedId.equals(other.acceptedId))
+			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -77,29 +66,37 @@ public class Answer {
 			return false;
 		if (id != other.id)
 			return false;
-		if (questionId != other.questionId)
+		if (status != other.status)
 			return false;
-		if (userId != other.userId)
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (userID != other.userID)
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Answer [id=" + id + ", userId=" + userId + ", questionId=" + questionId + ", content=" + content
-				+ ", creationDate=" + creationDate + ", editDate=" + editDate + "]";
-	}
-
-	public Answer(int id, int userId, int questionId,
-			@NotBlank(message = "Content must have a string value") String content, LocalDateTime creationDate,
-			LocalDateTime editDate) {
+	public Question(int id, Integer acceptedId, @NotBlank(message = "Title requires a string value") String title,
+			@NotBlank(message = "Content requires a string value") String content, LocalDateTime creationDate,
+			LocalDateTime editDate, boolean status, int userID) {
 		super();
 		this.id = id;
-		this.userId = userId;
-		this.questionId = questionId;
+		this.acceptedId = acceptedId;
+		this.title = title;
 		this.content = content;
 		this.creationDate = creationDate;
 		this.editDate = editDate;
+		this.status = status;
+		this.userID = userID;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", acceptedId=" + acceptedId + ", title=" + title + ", content=" + content
+				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", userID="
+				+ userID + "]";
 	}
 
 }
