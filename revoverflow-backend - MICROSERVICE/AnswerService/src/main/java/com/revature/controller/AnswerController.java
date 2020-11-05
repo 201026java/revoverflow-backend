@@ -62,10 +62,12 @@ public class AnswerController {
 	/** @author Natasha Poser 
 	 * @param acceptedId = accepted_id
 	 * @return This is the GetAcceptedAnswerByQuestionId end-point. */
-	@GetMapping("/acceptedAnswers/{acceptedId}")
-	public Page<Answer> getAcceptedAnswerByQuestionId(Pageable pageable, @PathVariable int acceptedId){
-		return answerService.getAcceptedAnswerByQuestionId(pageable, acceptedId);
-	}
+	/*
+	 * @GetMapping("/acceptedAnswers/{acceptedId}") public Page<Answer>
+	 * getAcceptedAnswerByQuestionId(Pageable pageable, @PathVariable int
+	 * acceptedId){ return answerService.getAcceptedAnswerByQuestionId(pageable,
+	 * acceptedId); }
+	 */
 	
 	/** @author Natasha Poser 
 	 * @param id = id
