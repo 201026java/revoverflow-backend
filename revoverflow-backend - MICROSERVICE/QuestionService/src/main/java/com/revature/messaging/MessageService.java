@@ -21,17 +21,17 @@ public class MessageService {
 	@Autowired
 	private KafkaTemplate<String, MessageEvent> kt;
 	
-	public void triggerFlashcardEvent(MessageEvent event) {
+	public void triggerQuestionEvent(MessageEvent event) {
 		eventCache.add(event.hashCode());
 		
 		if(event.getOperation() == Operation.DELETE) {
-			kt.send("quiz-flashcard", event);
+			kt.send("question", event);
 		}
 		
-		kt.send("flashcard", event);
+		kt.send("question", event);
 	}
 	
-	@KafkaListener(topics = "answers")
+	@KafkaListener(topics = "question")
 	public void processMessageEvent(MessageEvent event) {
 		if(eventCache.contains(event.hashCode())) {
 			eventCache.remove(event.hashCode());
