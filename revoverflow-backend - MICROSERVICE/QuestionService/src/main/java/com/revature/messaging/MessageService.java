@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.repositories.QuestionRepository;
 
-@Service
+
 public class MessageService {
 	
 	private static Set<Integer> eventCache = new HashSet<>();

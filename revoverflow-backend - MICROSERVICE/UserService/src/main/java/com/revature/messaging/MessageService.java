@@ -6,11 +6,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
 
 import com.revature.repositories.UserRepository;
 
-@Service
+
 public class MessageService {
 	
 	private static Set<Integer> eventCache = new HashSet<>();

@@ -10,8 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "answers")
+@Data @Getter @Setter @NoArgsConstructor
 public class Answer {
 
 	@Id
@@ -30,55 +36,7 @@ public class Answer {
 	// add the not null check in the service layer
 	private LocalDateTime creationDate;
 
-	private LocalDateTime editDate;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getQuestionId() {
-		return questionId;
-	}
-
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public LocalDateTime getEditDate() {
-		return editDate;
-	}
-
-	public void setEditDate(LocalDateTime editDate) {
-		this.editDate = editDate;
-	}
+	private LocalDateTime editDate;	
 
 	@Override
 	public int hashCode() {
@@ -142,11 +100,6 @@ public class Answer {
 		this.content = content;
 		this.creationDate = creationDate;
 		this.editDate = editDate;
-	}
-
-	public Answer() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

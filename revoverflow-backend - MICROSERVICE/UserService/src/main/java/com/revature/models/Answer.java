@@ -4,6 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter @NoArgsConstructor
 public class Answer {
 
 	private int id;
@@ -12,54 +17,6 @@ public class Answer {
 	private String content;
 	private LocalDateTime creationDate;
 	private LocalDateTime editDate;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getQuestionId() {
-		return questionId;
-	}
-
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public LocalDateTime getEditDate() {
-		return editDate;
-	}
-
-	public void setEditDate(LocalDateTime editDate) {
-		this.editDate = editDate;
-	}
 
 	@Override
 	public int hashCode() {
@@ -123,11 +80,6 @@ public class Answer {
 		this.content = content;
 		this.creationDate = creationDate;
 		this.editDate = editDate;
-	}
-
-	public Answer() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

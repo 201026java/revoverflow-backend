@@ -4,6 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter @NoArgsConstructor
 public class Question {
 
 	private int id;
@@ -14,70 +19,6 @@ public class Question {
 	private LocalDateTime editDate;
 	private boolean status;
 	private int userID;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Integer getAcceptedId() {
-		return acceptedId;
-	}
-
-	public void setAcceptedId(Integer acceptedId) {
-		this.acceptedId = acceptedId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public LocalDateTime getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(LocalDateTime creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public LocalDateTime getEditDate() {
-		return editDate;
-	}
-
-	public void setEditDate(LocalDateTime editDate) {
-		this.editDate = editDate;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
 
 	@Override
 	public int hashCode() {
@@ -156,11 +97,6 @@ public class Question {
 		return "Question [id=" + id + ", acceptedId=" + acceptedId + ", title=" + title + ", content=" + content
 				+ ", creationDate=" + creationDate + ", editDate=" + editDate + ", status=" + status + ", userID="
 				+ userID + "]";
-	}
-
-	public Question() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }
