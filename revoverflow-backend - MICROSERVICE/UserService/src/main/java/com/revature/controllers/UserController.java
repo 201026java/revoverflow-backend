@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.models.Users;
+import com.revature.models.User;
 import com.revature.repositories.UserRepository;
 
 @RestController
@@ -21,8 +21,8 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Users> getById(@PathVariable int id){
-		Optional<Users> user = userRepository.findById(id);
+	public ResponseEntity<User> getById(@PathVariable int id){
+		Optional<User> user = userRepository.findById(id);
 
 		if(user.isPresent()) {
 			return ResponseEntity.ok(user.get());			
@@ -32,8 +32,8 @@ public class UserController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Users>> getAllUser(){
-		List<Users> users = userRepository.findAll();
+	public ResponseEntity<List<User>> getAllUser(){
+		List<User> users = userRepository.findAll();
 
 		if(users.size() != 0) {
 			System.out.print(users.size());

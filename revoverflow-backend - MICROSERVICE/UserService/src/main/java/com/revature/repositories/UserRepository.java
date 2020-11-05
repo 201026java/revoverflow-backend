@@ -2,10 +2,10 @@ package com.revature.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.revature.models.Users;
+import com.revature.models.User;
 
-public interface UserRepository extends JpaRepository<Users, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer>{
 
-	Users findByEmail(String string);
+	User findByEmail(String string);
 }
 
